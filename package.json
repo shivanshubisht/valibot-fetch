@@ -1,0 +1,36 @@
+{
+  "name": "valibot-fetch",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint & manypkg check",
+    "test": "turbo test",
+    "typecheck": "turbo  typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "release": "changeset version && changeset publish"
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.4.8",
+    "@changesets/cli": "^2.26.2",
+    "@manypkg/cli": "^0.21.0",
+    "@types/node": "20.4.9",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "8.46.0",
+    "prettier": "latest",
+    "turbo": "latest",
+    "typescript": "5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@8.6.10"
+}
