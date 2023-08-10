@@ -1,0 +1,40 @@
+{
+  "name": "valibot-fetch",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "description": "A simple API for creating a type-safe fetcher with Valibot",
+  "scripts": {
+    "dev": "vitest",
+    "test": "vitest run",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc && eslint src/**",
+    "release": "pnpm run build && changeset publish"
+  },
+  "keywords": [
+    "valibot",
+    "fetch",
+    "typescript"
+  ],
+  "author": "Shivanshu Bisht",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shivanshubisht/valibot-fetch.git"
+  },
+  "dependencies": {
+    "valibot": "^0.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "isomorphic-fetch": "^3.0.0",
+    "msw": "^1.2.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  },
+  "peerDependencies": {
+    "valibot": "^0.11.1"
+  }
+}
