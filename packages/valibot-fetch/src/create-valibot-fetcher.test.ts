@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import 'isomorphic-fetch'
 import { createValibotFetcher } from '.'
-import { number, object, string } from 'valibot'
+import { number, object, string, ValiError } from 'valibot'
 
 const server = setupServer()
 beforeAll(() => server.listen())
@@ -29,6 +29,35 @@ it('Should create a default fetcher', async () => {
   expect(response).toEqual({
     hello: 'world',
   })
+})
+
+it('Should throw an error with mis-matched schemas with a default fetcher', async () => {
+  server.use(
+    rest.get('https://example.com', (req, res, ctx) => {
+      return res(ctx.json({ hello: 'world' }), ctx.status(200))
+    })
+  )
+
+  const fetchWithValibot = createValibotFetcher()
+
+  await expect(
+    fetchWithValibot(
+      object({
+        hello: number(),
+      }),
+      'https://example.com'
+    )
+  ).rejects.toMatchObject(
+    new ValiError([
+      {
+        reason: 'type',
+        validation: 'number',
+        origin: 'value' as const,
+        message: 'Invalid type',
+        input: 1,
+      },
+    ])
+  )
 })
 
 it('Should throw an error if response is not ok with the default fetcher', async () => {
