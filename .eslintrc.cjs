@@ -1,36 +1,28 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
   root: true,
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: [
-      "./examples/*/tsconfig.json",
-      "./packages/*/tsconfig.json",
-      "./www/docs/tsconfig.json",
-    ],
+    project: ['./packages/*/tsconfig.json'],
   },
-  plugins: ["@typescript-eslint"],
-  extends: [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-  ],
+  plugins: ['@typescript-eslint'],
   rules: {
-    "@typescript-eslint/no-unused-vars": [
-      "error",
+    '@typescript-eslint/no-unused-vars': [
+      'error',
       {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^_",
-        caughtErrorsIgnorePattern: "^_",
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
       },
     ],
   },
   ignorePatterns: [
-    "**/dist/**",
-    "**/node_modules/**",
-    ".eslintrc.cjs",
-    "**/config.*",
+    '**/dist/**',
+    '**/node_modules/**',
+    '.eslintrc.cjs',
+    '**/config.*',
   ],
-};
+}
 
-module.exports = config;
+module.exports = config
