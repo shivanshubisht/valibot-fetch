@@ -9,7 +9,7 @@
     "dev": "vitest",
     "test": "vitest run",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "lint": "tsc && eslint src/**",
+    "lint": "tsc",
     "release": "pnpm run build && changeset publish"
   },
   "keywords": [
@@ -27,7 +27,6 @@
     "valibot": "^0.12.0"
   },
   "devDependencies": {
-    "eslint": "^8.47.0",
     "isomorphic-fetch": "^3.0.0",
     "msw": "^1.2.3",
     "tsup": "^7.2.0",
