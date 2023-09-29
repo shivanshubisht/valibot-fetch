@@ -1,1 +1,1 @@
-export * from "./create-valibot-fetcher";
+export * from './create-valibot-fetcher'

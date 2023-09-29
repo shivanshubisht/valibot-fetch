@@ -1,7 +1,6 @@
 import { afterAll, afterEach, beforeAll, expect, it } from 'vitest'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import 'isomorphic-fetch'
 import { createValibotFetcher } from '.'
 import { number, object, string, ValiError } from 'valibot'
 
