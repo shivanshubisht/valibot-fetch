@@ -1,8 +1,8 @@
-import { afterAll, afterEach, beforeAll, expect, it } from 'vitest'
 import { HttpResponse, http } from 'msw'
 import { setupServer } from 'msw/node'
+import { ValiError, number, object, string } from 'valibot'
+import { afterAll, afterEach, beforeAll, expect, it } from 'vitest'
 import { createValibotFetcher } from '.'
-import { number, object, string, ValiError } from 'valibot'
 
 const server = setupServer()
 beforeAll(() => server.listen())
