@@ -14,17 +14,19 @@
     "test": "turbo test",
     "typecheck": "turbo  typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "release": "changeset version && changeset publish"
+    "release": "changeset version && changeset publish",
+    "clean": "git clean -xdf node_modules dist .turbo",
+    "clean:workspaces": "turbo clean"
   },
   "dependencies": {
-    "@changesets/changelog-github": "^0.4.8",
-    "@changesets/cli": "^2.26.2",
-    "@manypkg/cli": "^0.21.0",
-    "@types/node": "20.7.2",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.1",
+    "@manypkg/cli": "^0.21.1",
+    "@types/node": "20.10.6",
     "prettier": "latest",
     "turbo": "latest",
-    "typescript": "5.2.2",
-    "vitest": "^0.34.6"
+    "typescript": "5.3.3",
+    "vitest": "^1.1.1"
   },
   "engines": {
     "node": ">=18.0.0"

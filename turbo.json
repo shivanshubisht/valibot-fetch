@@ -19,6 +19,12 @@
     "typecheck": {
       "outputs": [],
       "cache": true
+    },
+    "clean": {
+      "outputs": []
+    },
+    "clean:workspaces": {
+      "outputs": []
     }
   }
 }
