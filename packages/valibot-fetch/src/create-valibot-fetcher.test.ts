@@ -1,5 +1,5 @@
 import { afterAll, afterEach, beforeAll, expect, it } from 'vitest'
-import { rest } from 'msw'
+import { HttpResponse, http } from 'msw'
 import { setupServer } from 'msw/node'
 import { createValibotFetcher } from '.'
 import { number, object, string, ValiError } from 'valibot'
@@ -11,8 +11,8 @@ afterAll(() => server.close())
 
 it('Should create a default fetcher', async () => {
   server.use(
-    rest.get('https://example.com', (req, res, ctx) => {
-      return res(ctx.json({ hello: 'world' }), ctx.status(200))
+    http.get('https://example.com', () => {
+      return HttpResponse.json({ hello: 'world' }, {status: 200})
     })
   )
 
@@ -32,8 +32,8 @@ it('Should create a default fetcher', async () => {
 
 it('Should throw an error with mis-matched schemas with a default fetcher', async () => {
   server.use(
-    rest.get('https://example.com', (req, res, ctx) => {
-      return res(ctx.json({ hello: 'world' }), ctx.status(200))
+    http.get('https://example.com', () => {
+      return HttpResponse.json({ hello: 'world' }, {status: 200})
     })
   )
 
@@ -61,13 +61,8 @@ it('Should throw an error with mis-matched schemas with a default fetcher', asyn
 
 it('Should throw an error if response is not ok with the default fetcher', async () => {
   server.use(
-    rest.get('https://example.com', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          error: 'Invalid permissions',
-        }),
-        ctx.status(403)
-      )
+        http.get('https://example.com', () => {
+      return HttpResponse.json({ error: 'Invalid permissions' }, {status: 403})
     })
   )
 
@@ -89,8 +84,8 @@ it('Should handle successes with custom fetchers', async () => {
   })
 
   server.use(
-    rest.get('https://example.com', (req, res, ctx) => {
-      return res(ctx.json({ hello: 'world' }), ctx.status(200))
+    http.get('https://example.com', () => {
+      return HttpResponse.json({ hello: 'world' }, {status: 200})
     })
   )
 
