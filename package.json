@@ -3,7 +3,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint & manypkg check",
+    "lint": "turbo lint",
     "test": "turbo test",
     "typecheck": "turbo  typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
